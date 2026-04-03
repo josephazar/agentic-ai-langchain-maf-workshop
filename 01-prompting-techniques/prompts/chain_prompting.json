@@ -1,0 +1,9 @@
+{
+  "article": "Artificial intelligence is revolutionizing healthcare by enabling faster diagnosis,\npersonalized treatment plans, and drug discovery. Machine learning models can now\ndetect diseases like cancer from medical images with accuracy rivaling expert doctors.\nAI-powered tools are also helping hospitals manage resources more efficiently,\nreducing costs and improving patient outcomes across the globe.",
+  "manual_summary_template": "Summarize in 2 sentences:\n\n{article}",
+  "manual_key_points_template": "Extract 3 bullet points:\n\n{summary}",
+  "manual_email_template": "Write a professional email:\n\n{key_points}",
+  "summary_template": "Summarize in 2 sentences:\n\n{article}",
+  "keypoints_template": "Extract 3 bullet points:\n\n{summary}",
+  "email_template": "Write a professional email:\n\n{key_points}"
+}

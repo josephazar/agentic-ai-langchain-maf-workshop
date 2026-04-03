@@ -1,0 +1,6 @@
+{
+  "review": "The phone has an amazing camera and great battery life, but it overheats and the price is too high.",
+  "review2": "Absolutely love this keyboard, super quiet and responsive. Delivery was slow though.",
+  "system_message": "You are a product review analyst. Return only JSON.",
+  "user_message_template": "Analyze this review and return JSON with sentiment, score (1-10), and key_issues list.\nReview: {review}"
+}

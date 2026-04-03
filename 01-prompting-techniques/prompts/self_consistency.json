@@ -1,0 +1,4 @@
+{
+  "billing_question": "You are a billing analyst resolving customer complaints.\nA client says: \"I was charged $180, but my plan is $50/month for 4 months,\nand I was supposed to get a $20 discount on the total.\"\n\nFor each case:\n1. Identify the amount charged\n2. Calculate the correct amount\n3. Compute the difference\n4. Clearly state if the client was overcharged, undercharged, or correctly charged.\nLet's think step by step.",
+  "factory_question": "A factory produces widgets in batches. Each batch starts with 120 raw units.\nDuring quality control, 15% of units are rejected. Of the remaining units,\na third are sent to packaging. Packaging loses 8 units due to damage.\nThe packaged units are split equally into boxes of 6. Each box is sold for $12.\nHowever, 20% of boxes are returned by customers. Returned boxes are restocked\nand resold at half price. How much total revenue does the factory make from one batch?\nLet's think step by step."
+}

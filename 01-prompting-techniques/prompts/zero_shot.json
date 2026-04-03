@@ -1,0 +1,16 @@
+{
+  "tasks": [
+    {
+      "name": "Classification - Churn Risk vs Upsell vs Process Gap",
+      "prompt": "Analyze the following client email and classify it into exactly one of these categories: Churn Risk, Upsell Opportunity, or Internal Process Gap.\n\nEmail: 'I really appreciate how quickly your team fixed the bug we reported last week. However, we've realized that the manual workaround we had to use in the meantime actually highlighted a few steps in our own workflow that are completely redundant. We're now reconsidering if we need the full Enterprise suite or if we should just build a lightweight internal tool to handle the core functions ourselves.'"
+    },
+    {
+      "name": "Summarization - Complex Technical Text",
+      "prompt": "Summarize the following text in one sentence: 'Transformer-based large language models leverage self-attention mechanisms to process sequential data in parallel, enabling them to capture long-range dependencies more effectively than recurrent architectures, though at the cost of quadratic memory complexity with respect to sequence length.'"
+    },
+    {
+      "name": "Extraction - Messy Real World Text",
+      "prompt": "Extract all people, companies, and dollar amounts from this text: 'After months of negotiation, Elon Musk finalized a $44 billion acquisition of Twitter, while Satya Nadella announced Microsoft would invest $10 billion into OpenAI, a company cofounded by Sam Altman and Greg Brockman.'"
+    }
+  ]
+}

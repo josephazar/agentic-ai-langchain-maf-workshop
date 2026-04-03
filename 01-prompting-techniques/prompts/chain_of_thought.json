@@ -1,0 +1,6 @@
+{
+  "question_logic": "There are 5 houses in a row. Each house has a different color: red, blue, green, yellow, and white. The red house is next to the blue house. The green house is at the far left. The yellow house is between the green and red houses. What color is the house on the far right?",
+  "billing_complaint": "I was billed $275, but my subscription is $80/month for 3 months, and I also had a one-time setup fee of $25.",
+  "zero_shot_template": "You are a billing analyst resolving customer complaints.\nFor each case:\n1. Identify the amount charged\n2. Calculate the correct amount\n3. Compute the difference\n4. Clearly state if the client was overcharged or undercharged\n\nClient complaint:\n{billing_complaint} Let's think step by step.",
+  "few_shot_template": "You are a billing analyst resolving customer complaints.\nFor each case:\n1. Identify the amount charged\n2. Calculate the correct amount\n3. Compute the difference\n4. Clearly state if the client was overcharged or undercharged\n\nExample:\nClient complaint: \"I was billed $200, but my subscription is $50/month for 3 months.\"\nSolution:\nStep 1: Amount charged = $200\nStep 2: Correct amount = $50 x 3 = $150\nStep 3: Difference = $200 - $150 = $50\nStep 4: The client was overcharged.\nFinal Answer: Overcharged by $50\n\n---\nNow solve:\nClient complaint:\n{billing_complaint}"
+}

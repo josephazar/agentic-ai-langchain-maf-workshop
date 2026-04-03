@@ -1,0 +1,6 @@
+{
+  "puzzle": "You have a 4L jug and a 3L jug with no markings. You need to measure exactly 2L of water. You can fill, empty, or pour between jugs.",
+  "branch_prompt_template": "Problem: {puzzle}\n\nGenerate 3 different possible approaches (branches) to solve this.\nFor each branch, describe the first 2-3 moves only.\nLabel them Branch A, Branch B, and Branch C.\nDo not solve them fully yet — just outline the strategy.",
+  "evaluate_prompt_template": "Problem: {puzzle}\n\nHere are 3 proposed approaches:\n{branches}\n\nEvaluate each branch:\n- Will it lead to a valid solution?\n- How many steps will it likely take?\n- Are there any dead ends or inefficiencies?\n\nScore each branch 1-10 and clearly state which ones to PRUNE (discard)\nand which one is the MOST PROMISING. Explain your reasoning.",
+  "solve_prompt_template": "Problem: {puzzle}\n\nHere are the proposed approaches:\n{branches}\n\nHere is the evaluation:\n{evaluation}\n\nNow take the MOST PROMISING branch and solve it fully step by step.\nShow each move clearly (fill, empty, pour) and the state of both jugs after each move.\nFormat: Move N: [action] → 4L jug: XL | 3L jug: YL"
+}

@@ -1,0 +1,4 @@
+{
+  "task_1_prompt": "Extract the information from the text and return ONLY a JSON object with no extra text.\nFormat: {\"name\": \"...\", \"age\": ..., \"city\": \"...\"}\nText: John Smith is 28 years old and lives in New York.",
+  "task_2_prompt": "Analyze the following product review and return ONLY a JSON object.\nFormat: {\"sentiment\": \"positive/negative/neutral\", \"score\": 1-10, \"key_issues\": [...]}\nReview: The laptop is fast and looks great but the battery life is disappointing and it runs hot."
+}
