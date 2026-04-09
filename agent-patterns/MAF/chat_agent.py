@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 load_dotenv()
 
@@ -9,7 +9,7 @@ async def invoke_chat_supervisor(
     conversation_history: str = "",
 ) -> dict:
 
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="Chat Agent",
         instructions=f"""You are a conversational AI assistant.
 

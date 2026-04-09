@@ -2,7 +2,7 @@ import asyncio
 import os
 from dotenv import load_dotenv
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 from langchain_community.vectorstores import FAISS
 from langchain_openai import AzureOpenAIEmbeddings
@@ -39,7 +39,7 @@ def rag_search(query: str) -> str:
 
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="RAG Agent",
         description="An agent that answers using a vector database.",
         instructions="""

@@ -1,7 +1,7 @@
 import asyncio
 import json
 import inspect
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 from mcp import ClientSession
 from mcp.client.sse import sse_client
@@ -47,7 +47,7 @@ def make_mcp_tool_func(session: ClientSession, tool):
         param_names = [p.name for p in params]
         for i, val in enumerate(args):
             if i < len(param_names):
-                kwargs[param_name[i]] = val
+                kwargs[param_names[i]] = val
 
         # Keep only the actual tool arguments
         filtered_kwargs = {k: v for k, v in kwargs.items() if k in properties}
@@ -96,7 +96,7 @@ async def main():
 
             print("Loaded tools:", [t.__name__ for t in tools])
 
-            agent = AzureOpenAIResponsesClient().create_agent(
+            agent = OpenAIChatClient().as_agent(
                 name="MAF MCP Agent",
                 description="An agent that uses tools loaded from an MCP server.",
                 instructions="""

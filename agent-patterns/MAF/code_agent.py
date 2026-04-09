@@ -9,7 +9,9 @@ import subprocess
 import tempfile
 from datetime import datetime
 from dotenv import load_dotenv
-from agent_framework.azure import AzureOpenAIResponsesClient
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from agent_framework.openai import OpenAIChatClient
 from memory_store import load_session, save_session
 
 load_dotenv()
@@ -238,7 +240,7 @@ Rules:
 
     log_prompt("generator_instructions", instructions)
 
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Code Generator",
         description="Generates complete runnable Python code.",
         instructions=instructions,
@@ -265,7 +267,7 @@ Return ONLY valid JSON in this exact format:
 
     log_prompt("debugger_instructions", instructions)
 
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Code Debugger",
         description="Fixes failing Python code.",
         instructions=instructions,

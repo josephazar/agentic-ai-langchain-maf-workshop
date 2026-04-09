@@ -23,13 +23,13 @@ factory_question = PROMPTS["factory_question"]
 
 
 single_billing = client.chat.completions.create(
-    model="gpt-4.1",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0,
     messages=[{"role": "user", "content": billing_question}]
 ).choices[0].message.content
 
 single_factory = client.chat.completions.create(
-    model="gpt-4.1",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0,
     messages=[{"role": "user", "content": factory_question}]
 ).choices[0].message.content
@@ -43,7 +43,7 @@ print("PROBLEM 1 RUNS — BILLING COMPLAINT")
 billing_responses = []
 for i in range(NUM_RUNS):
     answer = client.chat.completions.create(
-        model="gpt-4.1",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         temperature=0.7,
         messages=[{"role": "user", "content": billing_question}]
     ).choices[0].message.content
@@ -56,7 +56,7 @@ print("PROBLEM 2 RUNS — FACTORY REVENUE")
 factory_responses = []
 for i in range(NUM_RUNS):
     answer = client.chat.completions.create(
-        model="gpt-4.1",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         temperature=0.7,
         messages=[{"role": "user", "content": factory_question}]
     ).choices[0].message.content

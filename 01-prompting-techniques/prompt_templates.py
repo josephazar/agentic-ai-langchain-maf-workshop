@@ -17,7 +17,7 @@ raw_client = AzureOpenAI(
 )
 
 langchain_model = AzureChatOpenAI(
-    azure_deployment="gpt-5-mini",
+    azure_deployment=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     api_version="2024-12-01-preview",
     azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
     api_key=os.environ["AZURE_OPENAI_API_KEY"],
@@ -38,7 +38,7 @@ print("APPROACH 1 — RAW API CALL")
 
 
 raw_response = raw_client.chat.completions.create(
-    model="gpt-5-mini",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     
     messages=[
         {"role": "system", "content": PROMPTS["system_message"]},

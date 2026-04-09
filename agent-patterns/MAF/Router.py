@@ -1,9 +1,13 @@
 import asyncio
 import uuid
+import os
+import sys
 import json
 from datetime import datetime
 from dotenv import load_dotenv
-from agent_framework.azure import AzureOpenAIResponsesClient
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from agent_framework.openai import OpenAIChatClient
 from memory_store import load_session, save_session
 
 # ========================
@@ -72,7 +76,7 @@ and any details that may matter later. Be concise.
 
 Respond with ONLY the updated summary text, nothing else."""
 
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="Summary Agent",
         description="Maintains a running conversation summary.",
         instructions="You are a summarizer. Respond with ONLY the updated summary text.",
@@ -104,7 +108,7 @@ async def maybe_summarize(
 def create_router_agent(trimmed_history_text: str):
     memory_context = f"\n\nConversation so far:\n{trimmed_history_text}" if trimmed_history_text else ""
 
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Router",
         description="Routes user queries to the correct supervisor.",
         instructions=f"""You are a router directing user queries to the right AI supervisor.

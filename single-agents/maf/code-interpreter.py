@@ -14,7 +14,7 @@ import tempfile
 from dotenv import load_dotenv
 load_dotenv()
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 # ── Sandboxed Code Execution Tool ─────────────────────────────────────────────
 
@@ -61,7 +61,7 @@ def execute_python(code: str) -> str:
 # ── MAF Agent ─────────────────────────────────────────────────────────────────
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="Code Interpreter Agent",
         description="An agent that writes and executes Python code to solve problems.",
         instructions=(

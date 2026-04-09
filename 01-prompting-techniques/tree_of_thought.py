@@ -30,7 +30,7 @@ puzzle = PROMPTS["puzzle"]
 branch_prompt = PROMPTS["branch_prompt_template"].format(puzzle=puzzle)
 
 branch_response = client.chat.completions.create(
-    model="gpt-4.1",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0.7,
     messages=[{"role": "user", "content": branch_prompt}]
 )
@@ -46,7 +46,7 @@ evaluate_prompt = PROMPTS["evaluate_prompt_template"].format(
 )
 
 evaluate_response = client.chat.completions.create(
-    model="gpt-4.1",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0,
     messages=[{"role": "user", "content": evaluate_prompt}]
 )
@@ -63,7 +63,7 @@ solve_prompt = PROMPTS["solve_prompt_template"].format(
 )
 
 solve_response = client.chat.completions.create(
-    model="gpt-4.1",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0,
     messages=[{"role": "user", "content": solve_prompt}]
 )

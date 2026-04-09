@@ -22,14 +22,14 @@ for task_name, prompt in prompts:
 
     
     response_mini = client.chat.completions.create(
-        model="gpt-5-mini",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         messages=[{"role": "user", "content": prompt}]
     )
     print(f"\nGPT-5 Mini:\n{response_mini.choices[0].message.content}")
 
     
     response_41 = client.chat.completions.create(
-        model="gpt-4.1",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         messages=[{"role": "user", "content": prompt}]
     )
     print(f"\nGPT-4.1:\n{response_41.choices[0].message.content}")

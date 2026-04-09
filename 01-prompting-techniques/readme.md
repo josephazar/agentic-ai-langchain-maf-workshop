@@ -9,7 +9,7 @@ Each script is self-contained, loads its prompts from a matching JSON file in `p
 
 ### `zero_shot.py`
 Sends prompts to the model with **no examples** — just a plain instruction.  
-Runs the same tasks on both `gpt-5-mini` and `gpt-4.1` so you can compare outputs side by side.  
+Runs the same tasks on two model calls so you can compare outputs side by side.  
 Tasks cover classification, summarization, and extraction.
 
 > **Key takeaway:** Works great for simple, clear-cut tasks. Falls short when you need consistent formatting, business-specific rules, or handling edge cases — that's when you need few-shot.
@@ -99,6 +99,30 @@ Shows how `ChatPromptTemplate | AzureChatOpenAI | JsonOutputParser` replaces man
 Runs the same chain on two different reviews to demonstrate reusability.
 
 > **Key takeaway:** Templates decouple prompt structure from input data. The same pipeline runs on any input with a single `.invoke()` call — no copy-pasting message dicts.
+
+---
+
+## Setup
+
+1. Create a `.env` file in the project root with your Azure OpenAI credentials:
+
+```
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-api-key
+AZURE_OPENAI_MODEL=gpt-4.1-mini
+```
+
+2. Install dependencies:
+
+```bash
+pip install openai python-dotenv langchain langchain-openai
+```
+
+3. Run any script:
+
+```bash
+python zero_shot.py
+```
 
 ---
 

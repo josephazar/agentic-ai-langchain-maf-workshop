@@ -18,7 +18,7 @@ PROMPTS = json.loads(PROMPTS_PATH.read_text(encoding="utf-8"))
 
 for role in PROMPTS["roles"]:
     response = client.chat.completions.create(
-        model="gpt-5-mini",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         messages=[
             {"role": "system", "content": role["system"]},
             {"role": "user", "content": role["user"]},

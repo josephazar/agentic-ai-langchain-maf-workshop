@@ -1,3 +1,18 @@
 .env
 __pycache__/
 *.venv
+venv
+.claude/
+.DS_Store
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+*.swap
+*.swop
+
+# Test result files (generated, not committed)
+tests/results*.json
+tests/results*.csv

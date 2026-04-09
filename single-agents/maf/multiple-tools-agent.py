@@ -7,7 +7,7 @@ import functools
 import time
 from typing import Optional
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 
 from langchain_community.vectorstores import FAISS
@@ -195,7 +195,7 @@ def get_weather(location: str = "Beirut") -> str:
 # ─────────────────────────────────────────────
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="MAF Multi Tool Agent",
         description="Agent with multiple tools (RAG, Python, Weather, Search)",
         instructions="""

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, ValidationError
 import faiss
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -153,13 +153,13 @@ class FinalAnswerSchema(BaseModel):
 # BUILD AGENT
 # =========================================================
 def build_agent():
-    client = AzureOpenAIResponsesClient(
+    client = OpenAIChatClient(
         api_key=AZURE_OPENAI_API_KEY,
-        endpoint=AZURE_OPENAI_ENDPOINT,
-        deployment_name=AZURE_OPENAI_MODEL,
+        azure_endpoint=AZURE_OPENAI_ENDPOINT,
+        model=AZURE_OPENAI_MODEL,
     )
 
-    agent = client.create_agent(
+    agent = client.as_agent(
         name="ReflexionResearchAgent",
         description="A self-reflective researcher agent with memory and web search.",
         instructions="""

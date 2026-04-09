@@ -1,7 +1,7 @@
 import asyncio
 import os
 import sqlite3
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -61,7 +61,7 @@ def query_sqlite(query: str) -> str:
 # ============================
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="SQLite Agent",
         description="Agent that queries SQLite database",
         instructions="""

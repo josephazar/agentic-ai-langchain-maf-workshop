@@ -4,7 +4,7 @@ import uuid
 import json
 from datetime import datetime
 from dotenv import load_dotenv
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -102,7 +102,7 @@ Respond ONLY in this exact JSON format, nothing else:
 
     log_prompt("supervisor_instructions", instructions)
 
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Knowledge Supervisor",
         description="Decides which knowledge agents to call.",
         instructions=instructions,
@@ -121,7 +121,7 @@ Instructions:
 
     log_prompt("merger_instructions", instructions)
 
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Knowledge Merger",
         description="Synthesizes RAG and web search results into a final answer.",
         instructions=instructions,

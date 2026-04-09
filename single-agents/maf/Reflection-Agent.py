@@ -1,16 +1,16 @@
 import asyncio
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 
 load_dotenv()
 
-client = AzureOpenAIResponsesClient()
+client = OpenAIChatClient()
 
 # =========================================================
 # AGENTS
 # =========================================================
 
-generator_agent = client.create_agent(
+generator_agent = client.as_agent(
     name="Essay Generator",
     description="Writes and revises 5-paragraph essays.",
     instructions="""You are an essay assistant tasked with writing excellent 5-paragraph essays.
@@ -19,7 +19,7 @@ If the user provides critique, respond with a revised version of your previous a
 Return ONLY the essay, no preamble.""",
 )
 
-reflector_agent = client.create_agent(
+reflector_agent = client.as_agent(
     name="Essay Reflector",
     description="Critiques essay submissions.",
     instructions="""You are a teacher grading an essay submission.

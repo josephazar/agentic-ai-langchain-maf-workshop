@@ -18,12 +18,12 @@ PROMPTS = json.loads(PROMPTS_PATH.read_text(encoding="utf-8"))
 question_logic = PROMPTS["question_logic"]
 
 response_direct = client.chat.completions.create(
-    model="gpt-5-mini",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     messages=[{"role": "user", "content": question_logic}]
 )
 
 response_cot = client.chat.completions.create(
-    model="gpt-5-mini",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     messages=[{"role": "user", "content": question_logic + " Let's think step by step."}]
 )
 
@@ -47,12 +47,12 @@ zero_shot_prompt = PROMPTS["zero_shot_template"].format(billing_complaint=billin
 few_shot_prompt = PROMPTS["few_shot_template"].format(billing_complaint=billing_complaint)
 
 response_zero_shot = client.chat.completions.create(
-    model="gpt-5-mini",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     messages=[{"role": "user", "content": zero_shot_prompt}]
 )
 
 response_few_shot = client.chat.completions.create(
-    model="gpt-5-mini",
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     messages=[{"role": "user", "content": few_shot_prompt}]
 )
 

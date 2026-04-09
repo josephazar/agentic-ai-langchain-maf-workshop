@@ -8,7 +8,7 @@ MAF ReAct Agent with In-Memory RAG
 import asyncio
 import os
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 
 from langchain_openai import AzureOpenAIEmbeddings
@@ -80,7 +80,7 @@ def search_documents(query: str) -> str:
 # ── MAF Agent ────────────────────────────────────────────────────────────────
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="RAG Agent",
         description="An agent that answers questions from uploaded documents.",
         instructions="""

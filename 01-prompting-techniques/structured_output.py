@@ -48,7 +48,7 @@ def prompt_with_retry(messages, max_retries=3):
         print(f"  Attempt {attempt}...")
 
         response = client.chat.completions.create(
-            model="gpt-5-mini",
+            model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
             messages=conversation
         )
         raw = response.choices[0].message.content

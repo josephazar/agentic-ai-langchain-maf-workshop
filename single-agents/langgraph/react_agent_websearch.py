@@ -37,7 +37,7 @@ llm = AzureChatOpenAI(
     api_version="2024-12-01-preview",
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    model="gpt-5-mini" 
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini") 
 )
 
 llm_with_tools = llm.bind_tools(tools)

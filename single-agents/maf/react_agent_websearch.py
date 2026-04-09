@@ -1,5 +1,5 @@
 import asyncio
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 from dotenv import load_dotenv
 import os
 
@@ -25,7 +25,7 @@ def web_search(query: str) -> str:
 
 
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="My Azure Agent",
         description="An agent with Tavily web search.",
         instructions="""

@@ -19,7 +19,7 @@ client = AzureOpenAI(
     api_key=os.environ["AZURE_OPENAI_API_KEY"],
 )
 
-MODEL_NAME = "gpt-5-mini"
+MODEL_NAME = os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini")
 PROMPTS_PATH = Path(__file__).with_name("prompts") / "chain_prompting.json"
 PROMPTS = json.loads(PROMPTS_PATH.read_text(encoding="utf-8"))
 

@@ -2,11 +2,14 @@ import asyncio
 import uuid
 import json
 import os
+import sys
 from datetime import datetime
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from memory_store import load_session, save_session
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 load_dotenv()
 
@@ -62,7 +65,7 @@ def get_all_agent_memory(turns: list, key: str) -> str:
 # ========================
 
 def create_supervisor_agent(conversation_history: str):
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Engineering Supervisor",
         description="Plans which sub-agents to call based on the user request.",
         instructions=f"""You are a supervisor deciding which agents to call.
@@ -94,7 +97,7 @@ Respond ONLY in this exact JSON format, nothing else:
 
 
 def create_research_agent(prev_research_output: str):
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Research Agent",
         description="Explains concepts and provides research answers.",
         instructions=f"""You are a research agent.
@@ -110,7 +113,7 @@ Rules:
 
 
 def create_code_agent(prev_code_output: str):
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Code Agent",
         description="Writes and explains code.",
         instructions=f"""You are a code agent.
@@ -126,7 +129,7 @@ Rules:
 
 
 def create_compare_agent(prev_compare_output: str):
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Compare Agent",
         description="Compares technologies, approaches, or concepts.",
         instructions=f"""You are a comparison agent.
@@ -141,7 +144,7 @@ Rules:
 
 
 def create_merge_agent():
-    return AzureOpenAIResponsesClient().create_agent(
+    return OpenAIChatClient().as_agent(
         name="Merge Agent",
         description="Merges outputs from sub-agents into a final answer.",
         instructions="""You are a merge agent. You receive outputs from one or more sub-agents

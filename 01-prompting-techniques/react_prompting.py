@@ -64,7 +64,7 @@ for step in range(MAX_STEPS):
     # MODEL THINKS AND DECIDES AN ACTION
     
     response = client.chat.completions.create(
-        model="gpt-4.1",
+        model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
         temperature=0,
         messages=messages
     )
@@ -85,7 +85,7 @@ for step in range(MAX_STEPS):
     # PARSE ACTION AND INPUT FROM MODEL OUTPUT
     
     action_match = re.search(r"Action:\s*(\w+)", model_output)
-    input_match = re.search(r"Input:\s*(.+)", model_output)
+    input_match = re.search(r"Input:\s*([^\n]+)", model_output)
 
     if not action_match or not input_match:
         print("Could not parse action — stopping loop.")

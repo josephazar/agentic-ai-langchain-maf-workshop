@@ -4,7 +4,7 @@ from typing import Literal
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -200,7 +200,7 @@ async def agentic_rag_loop(agent, user_input: str, max_rewrites: int = 2) -> str
 # MAIN
 # =========================
 async def main():
-    agent = AzureOpenAIResponsesClient().create_agent(
+    agent = OpenAIChatClient().as_agent(
         name="MAF Agentic RAG Agent",
         description="A MAF-based agent that can route, grade, rewrite, and answer.",
         instructions="""

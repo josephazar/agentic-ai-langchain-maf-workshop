@@ -17,7 +17,7 @@ matplotlib.use("Agg")  # Non-interactive backend (no GUI window)
 import matplotlib.pyplot as plt
 
 from dotenv import load_dotenv
-from agent_framework.azure import AzureOpenAIResponsesClient
+from agent_framework.openai import OpenAIChatClient
 
 load_dotenv()
 
@@ -134,7 +134,7 @@ def visualize_csv(pandas_plot_code: str, output_path: str = "chart.png") -> str:
 
 tools = [load_csv, get_csv_info, query_csv, visualize_csv]
 
-agent = AzureOpenAIResponsesClient().create_agent(
+agent = OpenAIChatClient().as_agent(
     name="CSV Analyzer Agent",
     description="An agent that loads, queries, and visualizes CSV files using natural language.",
     instructions="""You are a CSV data analyst assistant.

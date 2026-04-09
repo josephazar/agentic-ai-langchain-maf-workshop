@@ -22,7 +22,7 @@ llm = AzureChatOpenAI(
     api_version="2024-12-01-preview",
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    model=os.getenv("AZURE_OPENAI_RESPONSES_DEPLOYMENT_NAME"),
+    model=os.getenv("AZURE_OPENAI_MODEL", "gpt-4.1-mini"),
     temperature=0
 )
 
